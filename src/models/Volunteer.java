@@ -41,7 +41,7 @@ public class Volunteer {
         setLastName(lastName);
         setPhoneNumber(phoneNumber);
         setBirthday(birthday);
-        setImageFile(new File ("./src/images/defaultPerson.png"));
+        setImageFile(new File("./src/images/defaultPerson.png"));
     }
 
     public Volunteer(String firstName, String lastName, String phoneNumber, LocalDate birthday, File imageFile) throws IOException {
@@ -221,7 +221,7 @@ public class Volunteer {
         try
         {
             //1. Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo_database","xxxxxxx","xxxxxxx");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo_database","EmersonGil","Emerson0505");
      
             //2.create a string that holds the query with ? as users input
             String sql = "INSERT INTO volunteers (firstName, lastName, phoneNumber, birthday, imageFile"
