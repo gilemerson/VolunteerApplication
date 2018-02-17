@@ -221,7 +221,7 @@ public class Volunteer {
         try
         {
             //1. Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo_database","EmersonGil","Emerson0505");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo_database","xxxxxxx","xxxxxxx");
      
             //2.create a string that holds the query with ? as users input
             String sql = "INSERT INTO volunteers (firstName, lastName, phoneNumber, birthday, imageFile"
