@@ -35,6 +35,7 @@ public class Volunteer {
     private String firstName, lastName, phoneNumber;
     private LocalDate birthday;
     private File imageFile;
+    private int volunteerID;
 
     public Volunteer(String firstName, String lastName, String phoneNumber, LocalDate birthday) {
         setFirstName(firstName);
@@ -49,8 +50,17 @@ public class Volunteer {
         setImageFile(imageFile);
         copyImageFile();
     }
-        
-    
+
+    public int getVolunteerID() {
+        return volunteerID;
+    }
+
+    public void setVolunteerID(int volunteerID) {
+        if(volunteerID >= 0)
+        this.volunteerID = volunteerID;
+        else
+            throw new IllegalArgumentException("VolunteerID must be >= 0");
+    }
 
     public String getFirstName() {
         return firstName;
@@ -205,6 +215,7 @@ public class Volunteer {
     /**
      * This method will return a formated string with the persons first name, last name and age
      *
+     * @return 
      */
     public String toString(){
         return String.format("%s %s is %d years old", firstName, lastName, Period.between(birthday, LocalDate.now()).getYears());
@@ -212,6 +223,7 @@ public class Volunteer {
     
     /**
      * This method will write to the instance of the volunteer into the database 
+     * @throws java.sql.SQLException
      */
     public void insertIntoDB() throws SQLException{
         
@@ -221,10 +233,10 @@ public class Volunteer {
         try
         {
             //1. Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo_database","EmersonGil","Emerson0505");
+            conn = DriverManager.getConnection("jdbc:mysql://sql.computerstudi.es:3306/gc200186807", "gc200186807", "W-z68qGy");
      
             //2.create a string that holds the query with ? as users input
-            String sql = "INSERT INTO volunteers (firstName, lastName, phoneNumber, birthday, imageFile"
+            String sql = "INSERT INTO volunteers (firstName, lastName, phoneNumber, birthday, imageFile)"
                     + "VALUES (?,?,?,?,?)";
             
             //3. Prepare the query 

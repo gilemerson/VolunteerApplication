@@ -35,6 +35,8 @@ public class VolunteerTableViewController implements Initializable {
    
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,6 +61,7 @@ public class VolunteerTableViewController implements Initializable {
     
     /**
      * This method will load the volunteers from the database and load them into the TableView object
+     * @throws java.sql.SQLException
      */
     public void loadVolunteers() throws SQLException {
         ObservableList<Volunteer> volunteers = FXCollections.observableArrayList();
@@ -70,10 +73,10 @@ public class VolunteerTableViewController implements Initializable {
         try 
         {
             //1.Connect to database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo_database", "EmersonGil", "Emerson0505");
+            conn = DriverManager.getConnection("jdbc:mysql://sql.computerstudi.es:3306/gc200186807", "gc200186807", "w-Z68qGy");
             
             //2.create a statement object
-            statement = conn .createStatement();
+            statement = conn.createStatement();
             
             //3.create the sql query
             resultSet = statement.executeQuery("SELECT * FROM volunteers");
@@ -93,7 +96,7 @@ public class VolunteerTableViewController implements Initializable {
         }
         catch(Exception e)
         {
-           System.out.println(e.getMessage());
+           System.err.println(e.getMessage());
         }
         finally
         {
